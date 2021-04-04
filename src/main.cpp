@@ -58,9 +58,20 @@ int main(int argc, const char **argv)
 
     // Build Model.
     RouteModel model{osm_data};
-
-    // Create RoutePlanner object and perform A* search.
-    RoutePlanner route_planner{model, 10, 10, 90, 90};
+//
+    float start_x,start_y,end_x,end_y = 0;
+    //todo a3: validate the inputs.
+    std::cout << "\n Please enter start x: ";
+    std::cin >> start_x;
+    std::cout << "\n Please enter start y: ";
+    std::cin >> start_y;
+    std::cout << "\n Please enter end x: ";
+    std::cin >> end_x;
+    std::cout << "\n Please enter end y: ";
+    std::cin >> end_y;
+     //Create RoutePlanner object and perform A* search.
+    RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
+    //RoutePlanner route_planner{model, 22, 11, 44, 99};
     route_planner.AStarSearch();
 
     std::cout << "Distance: " << route_planner.GetDistance() << " meters. \n";
